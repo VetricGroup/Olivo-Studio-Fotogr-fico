@@ -9,24 +9,25 @@
     <meta property="og:title" content="Olivo Studio Fotográfico — Fotografía en Pérez Zeledón">
     <meta property="og:description" content="Estudio fotográfico en Pérez Zeledón: familia, maternidad, nacimientos y crecimiento.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="images/logo.png">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Olivo Studio Fotográfico">
     <meta name="twitter:description" content="Estudio de fotografía: maternidad, sesiones femeninas y más en Costa Rica.">
     <link rel="canonical" href="https://jacquelinefotografia.com">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23030303'/%3E%3Cellipse cx='16' cy='16' rx='5' ry='10' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(-35 16 16)'/%3E%3Cline x1='16' y1='6' x2='16' y2='26' stroke='%23ffffff' stroke-width='0.8' transform='rotate(-35 16 16)'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23030303'/%3E%3Cellipse cx='16' cy='16' rx='5' ry='10' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(-35 16 16)'/%3E%3Cline x1='16' y1='6' x2='16' y2='26' stroke='%23ffffff' stroke-width='0.8' transform='rotate(-35 16 16)'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     
     <style>
-        html, body {
+        body {
             background-color: #030303;
             overflow-x: hidden;
-            max-width: 100%;
-        }
-        *, *::before, *::after {
-            box-sizing: border-box;
         }
 
         /* --- ANIMACIONES DEL HERO --- */
@@ -179,8 +180,9 @@
         }
         .sobre-img-wrap img {
             width: 100%;
-            aspect-ratio: 3/4;
+            aspect-ratio: 4/5;
             object-fit: cover;
+            object-position: center center;
             border-radius: 4px;
             filter: grayscale(0.2) contrast(1.05);
         }
@@ -898,8 +900,7 @@
         <div class="flex flex-col items-center text-center mb-16">
             <span class="text-xs uppercase tracking-[0.25em] text-white/25 mb-6">Servicios</span>
             <h2 class="text-5xl sm:text-7xl md:text-8xl font-extralight tracking-tighter uppercase">Lo que hago</h2>
-            <p class="mt-4 text-xs uppercase tracking-[0.4em] text-white/30 font-light hidden md:block">Pasa el cursor sobre cada servicio</p>
-            <p class="mt-4 text-xs uppercase tracking-[0.4em] text-white/30 font-light block md:hidden">Toca cada servicio para explorar</p>
+            <p class="mt-4 text-xs uppercase tracking-[0.4em] text-white/30 font-light">Pasa el cursor sobre cada servicio</p>
         </div>
 
         <div class="accordion-wrap">
@@ -973,7 +974,7 @@
     <section id="sobre" class="sobre-section">
         <div class="sobre-inner">
             <div class="sobre-img-wrap">
-                <img src="images/Ash.png"
+                <img src="images/Ashley.png"
                      alt="Jacqueline, fotógrafa especialista en maternidad y foto femenina">
             </div>
             <div>
