@@ -579,7 +579,7 @@
         .accordion-wrap {
             max-width: 1100px;
             margin: 0 auto;
-            overflow-x: visible;
+            overflow-x: auto;
         }
         .accordion-items {
             display: flex;
@@ -660,77 +660,25 @@
             opacity: 1;
         }
         @media (max-width: 768px) {
-            /* accordion-wrap sin overflow-x en mobile */
-            .accordion-wrap {
-                overflow-x: visible;
-                padding: 0 4px;
-            }
-            /* Grid 2x2 en mobile */
             .accordion-items {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto auto;
-                gap: 10px;
-                min-height: unset;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
             }
-            /* Todas las cards iguales en mobile — sin width/height animado */
             .acc-item {
                 width: 100% !important;
-                height: 200px !important;
-                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-                border-radius: 14px;
-                flex-shrink: unset;
+                height: 80px !important;
+                transition: height 0.6s cubic-bezier(0.76, 0, 0.24, 1);
             }
-            /* Primera card ocupa toda la fila */
-            .acc-item:first-child {
-                grid-column: 1 / -1;
-                height: 260px !important;
+            .acc-item.active {
+                height: 320px !important;
             }
-            /* Overlay más sutil en mobile */
-            .acc-item .acc-overlay {
-                background: rgba(0,0,0,0.35) !important;
+            .acc-item:not(.active) .acc-label {
+                transform: translateX(-50%);
+                top: auto;
+                bottom: 22px;
+                left: 50%;
             }
-            /* Label siempre visible y centrado en mobile */
-            .acc-item .acc-label,
-            .acc-item:not(.active) .acc-label,
-            .acc-item.active .acc-label {
-                position: absolute;
-                bottom: 20px !important;
-                top: auto !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: 0.1em;
-                white-space: nowrap;
-                color: rgba(255,255,255,0.95);
-                text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-            }
-            /* Desc siempre visible en mobile */
-            .acc-item .acc-desc {
-                opacity: 1 !important;
-                bottom: 40px;
-                font-size: 10px;
-                letter-spacing: 0.18em;
-            }
-            /* Tap effect en mobile */
-            .acc-item:active {
-                transform: scale(0.97);
-            }
-            /* Hint text mobile */
-            .mobile-hint {
-                display: block !important;
-            }
-        }
-        /* Hint "toca para explorar" — solo mobile */
-        .mobile-hint {
-            display: none;
-            text-align: center;
-            font-size: 10px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.2);
-            margin-top: 12px;
         }
 
         /* --- SECCIÓN CLIENTES / TESTIMONIOS --- */
@@ -951,7 +899,7 @@
             <span class="text-xs uppercase tracking-[0.25em] text-white/25 mb-6">Servicios</span>
             <h2 class="text-5xl sm:text-7xl md:text-8xl font-extralight tracking-tighter uppercase">Lo que hago</h2>
             <p class="mt-4 text-xs uppercase tracking-[0.4em] text-white/30 font-light hidden md:block">Pasa el cursor sobre cada servicio</p>
-            <p class="mt-4 text-xs uppercase tracking-[0.4em] text-white/30 font-light block md:hidden">Toca para explorar</p>
+            <p class="mt-4 text-xs uppercase tracking-[0.4em] text-white/30 font-light block md:hidden">Toca cada servicio para explorar</p>
         </div>
 
         <div class="accordion-wrap">
@@ -1259,9 +1207,8 @@
                     const isActive = i === activeIndex;
                     el.classList.toggle('active', isActive);
                     if (isMobile()) {
-                        // En mobile el layout es grid CSS — no manipular width/height por JS
-                        el.style.width  = '';
-                        el.style.height = '';
+                        el.style.width  = '100%';
+                        el.style.height = isActive ? '320px' : '80px';
                     } else {
                         el.style.width  = (isActive ? EXPANDED : COLLAPSED) + 'px';
                         el.style.height = '';
